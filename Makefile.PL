@@ -26,11 +26,3 @@ WriteMakefile(
 	PAIR('SourceMap/Token.pm'),
     }
 );
-
-sub MY::postamble {
-    return <<__MyStuff__;
-
-check:
-
-__MyStuff__
-}
