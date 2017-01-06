@@ -24,14 +24,14 @@ JS::SourceMap - Parse and use JS SourceMaps in Perl
 Current web development techniques like minification can make
 debugging deployed JS code a pain.  Source maps are a compact
 representation of the data necessary to turn a filename/line/column in
-a JS runtime error thrown in your browser into the real
+a JS runtime error thrown e.g. in your browser into the real
 filename/line/column in the source code where the error occurred.
 
 This is a set of Perl modules that allow you to decode and use JS
 source maps.  We have adapted much of this Perl implementation from
 the Python implementation at
 https://github.com/martine/python-sourcemap, which is BSD-licensed.
-Our API is very similar to that Python module.
+Our API is very similar to that Python module's.
 
 =cut
 
