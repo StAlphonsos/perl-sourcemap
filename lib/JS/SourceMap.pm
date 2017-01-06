@@ -49,14 +49,12 @@ $VERSION = '0.1.0';
 
 =over 4
 
-=item * load $stream [, @options ]
+=item * load $stream_or_filename [, @options ]
 
-Read the I/O handle C<$stream> completely and treat its contents as a
-sourcemap.  Returns a L<JS::SourceMap::Index> instance if successful,
-throws an error if not.
-
-If any C<@options> are given they are passed to the
-L<JS::SourceMap::Decoder> constructor.
+Our first argument can either be a filename or an open file handle of
+some kind; in the former case the file is opened, read and closed by
+us, in latter it is only read.  The contents are passed to L<loads>,
+along with any options.
 
 =back
 
@@ -64,9 +62,16 @@ L<JS::SourceMap::Decoder> constructor.
 
 sub load {
 	my($filething,@options) = @_;
+	my $opened = 0;
 	local($/);
 	$/ = undef;
+	if (defined($filething) && (-f $filething)) {
+		open(F, $filething) or die ("$filething: $!");
+		$filething = \*F;
+		$opened = 1;
+	}
 	my $slurp = <$filething>;
+	close($filething) if $opened;
 	return loads($slurp,@options);
 }
 

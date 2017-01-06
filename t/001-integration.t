@@ -19,8 +19,8 @@
 
 use strict;
 use warnings;
-use Test::More tests => 14202;
-use JS::SourceMap qw/discover loads/;
+use Test::More tests => 14203;
+use JS::SourceMap qw/discover loads load/;
 use JSON;
 
 use t::lib;
@@ -87,6 +87,7 @@ test_coolstuff;
 
 our($js,$min,$map) = get_fixture("unicode");
 ok(loads($map,assertions => 1),"unicode sourcemap loaded");
+ok(load("t/fixtures/unicode.min.map",assertions => 1),"load works w/filename");
 
 ##
 # Local variables:

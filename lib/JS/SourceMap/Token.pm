@@ -66,9 +66,10 @@ sub new {
 
 =item * name
 
-Accessors for the properties of a token: the minified line and column,
-source file name (can be undef), original source line and column and
-the name of the entity in the source file (is usually undef).
+Accessors for the properties of a token, respectively: the minified
+line and column, source file name (can be undef), original source line
+and column and the name of the entity in the source file (is
+frequently undef).
 
 =back
 
@@ -81,6 +82,29 @@ sub src		{ shift->{'src'} }
 sub src_line	{ shift->{'src_line'} }
 sub src_col	{ shift->{'src_col'} }
 sub name	{ shift->{'name'} }
+
+=pod
+
+=over 4
+
+=item * as_string
+
+Return a string representation of the data contained in the Token.
+
+=back
+
+=cut
+
+sub as_string {
+	my($self) = @_;
+	return sprintf(
+		q{<Token dst=%s:%s src=%s %s:%s%s%s>},
+		$self->dst_line, $self->dst_col,
+		$self->src? $self->src: '',
+		$self->src_line, $self->src_col,
+		$self->name? ' ': '',
+		$self->name? $self->name: '');
+}
 
 1;
 
