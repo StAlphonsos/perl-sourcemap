@@ -38,14 +38,11 @@ Our API is very similar to that Python module.
 package JS::SourceMap;
 use strict;
 use warnings;
-require Exporter;
+use parent qw(Exporter);
 use JS::SourceMap::Decoder;
-use vars qw(@ISA @EXPORT_OK @EXPORT %EXPORT_TAGS $VERSION);
+use vars qw(@EXPORT_OK $VERSION);
 
-@ISA = qw(Exporter);
 @EXPORT_OK = qw(load loads discover);
-@EXPORT = ();
-%EXPORT_TAGS = ( 'all' => \@EXPORT_OK );
 $VERSION = '0.1.0';
 
 =pod
@@ -102,7 +99,9 @@ sub loads {
 
 Examine the contents of a file of JS code for the marker that points
 to its source map.  If found we return the URL to the source map.  If
-not we return C<undef>.
+not we return C<undef>.  We search the five first and five last lines
+in the source code we're given, since the token we're looking for is
+supposed to be in there somewhere.
 
 =back
 

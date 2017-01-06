@@ -25,10 +25,9 @@ represented by L<JS::SourceMap::Token> instances.
 package JS::SourceMap::Index;
 use strict;
 use warnings;
-require Exporter;
-use vars qw(@ISA @EXPORT_OK);
+use parent qw(Exporter);
+use vars qw(@EXPORT_OK);
 
-@ISA = qw(Exporter);
 @EXPORT_OK = qw(token_index);
 
 # used internally to hide the fact that we can't use tuples as indexes

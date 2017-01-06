@@ -74,10 +74,10 @@ sub opt {
 	return ();
 }
 
-# internal
+# internal: parse a VLQ segment -> list of integers
 
 sub parse_vlq {
-	my($self,$segment) = @_;
+	my($segment) = @_;
 	my @values = ();
 	my($cur,$shift,$cont,$sign) = (0,0,0,0);
 	foreach my $c (split('',$segment)) {
@@ -136,7 +136,7 @@ sub decode {
 		$dst_col = 0;
 		foreach my $segment (@segments) {
 			next unless length($segment);
-			my @parse = $self->parse_vlq($segment);
+			my @parse = parse_vlq($segment);
 			return undef unless @parse;
 			$dst_col += $parse[0];
 			my($src,$name);
