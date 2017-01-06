@@ -27,23 +27,23 @@ made sense (no iterators in Perl).
 
 It's the usual deal:
 
-  $ perl Makefile.PL
-  $ make
-  $ make test
-  $ [ `uname` != OpenBSD ] && alias doas=sudo # doesn't everyone do this?
-  $ doas make install
+    $ perl Makefile.PL
+    $ make
+    $ make test
+    $ [ `uname` != OpenBSD ] && alias doas=sudo # doesn't everyone do this?
+    $ doas make install
 
 ## Usage
 
 Please read the JS::SourceMap POD, but in a nutshell:
 
-  #!/usr/bin/perl
-  # args: mapfile line col
-  # output: line col sourcefile
-  use JS::SourceMap;
+    #!/usr/bin/perl
+    # args: mapfile line col
+    # output: line col sourcefile
+    use JS::SourceMap;
 
-  $map = JS::SourceMap::load(shift(@ARGV)) or die "bad map";
-  $token = $map->lookup(@ARGV) or die "line/col out of bounds";
-  print sprintf("%d %d %s\n",$token->src_line,$token->src_col,$token->src);
+    $map = JS::SourceMap::load(shift(@ARGV)) or die "bad map";
+    $token = $map->lookup(@ARGV) or die "line/col out of bounds";
+    print sprintf("%d %d %s\n",$token->src_line,$token->src_col,$token->src);
 
 The web is a scary place.  Enjoy.
