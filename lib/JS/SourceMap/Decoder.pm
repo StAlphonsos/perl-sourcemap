@@ -194,7 +194,7 @@ sub decode {
 		++$dst_line;
 	}
 	return JS::SourceMap::Index->new(
-		$json, \@tokens, \@line_index, \@sources);
+		$json, \@tokens, \@line_index, $index, \@sources);
 }
 
 1;
