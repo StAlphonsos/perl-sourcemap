@@ -98,10 +98,11 @@ Return a string representation of the data contained in the Token.
 sub as_string {
 	my($self) = @_;
 	return sprintf(
-		q{<Token dst=%s:%s src=%s %s:%s%s%s>},
+		q{<Token: dst=%s:%s src=%s %s:%s%s%s>},
 		$self->dst_line, $self->dst_col,
 		$self->src? $self->src: '',
-		$self->src_line, $self->src_col,
+		$self->src_line? $self->src_line: '',
+		$self->src_col? $self->src_col: '',
 		$self->name? ' ': '',
 		$self->name? $self->name: '');
 }

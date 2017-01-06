@@ -118,6 +118,27 @@ Return a token in the index by number.
 sub len	{ scalar(@{shift->{'tokens'}}) }
 sub get	{ shift->{'tokens'}->[shift] }
 
+=pod
+
+=over 4
+
+=item * as_string
+
+Return a human-readable summary of the data in the index.
+
+=back
+
+=cut
+
+sub as_string {
+	my($self) = @_;
+	return sprintf(
+		q{<Index: %d tokens over %d lines in %d sources>},
+		scalar(@{$self->{'tokens'}}),
+		scalar(@{$self->{'line_index'}}),
+		scalar(@{$self->{'sources'}}));
+}
+
 1;
 
 __END__

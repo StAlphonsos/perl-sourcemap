@@ -19,7 +19,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 35;
+use Test::More tests => 40;
 use JS::SourceMap::Token;
 use JS::SourceMap::Index qw/token_index/;
 
@@ -41,10 +41,15 @@ our %index = (
 	T(1,12) => $tokens[3],
 );
 our $smi = JS::SourceMap::Index->new({},\@tokens,\@rows,\%index);
+our $s = $smi->as_string;
+
+ok($s,"index->as_string");
 
 is($smi->len,scalar(@tokens),"index->len");
 for(my $i = 0; $i < scalar(@tokens); ++$i) {
-	is($smi->get($i),$tokens[$i],"get(i)");
+	my $t = $smi->get($i);
+	is($t,$tokens[$i],"get($i)");
+	ok($t->as_string,"token->as_string");
 }
 
 foreach my $i (0..4) {
