@@ -47,10 +47,7 @@ sub slurp {
 sub get_fixture {
 	my($name) = @_;
 	die("where are my fixtures?") unless -d "t/fixtures";
-	my $js  = slurp("t/fixtures/${name}.js");
-	my $min = slurp("t/fixtures/${name}.min.js");
-	my $map = slurp("t/fixtures/${name}.min.map");
-	return($js,$min,$map);
+	return map { slurp("t/fixtures/${name}.$_") } qw(js min.js min.map);
 }
 
 sub assert { my($cond,$msg) = @_; die("ASSERTION FAILED: $msg") unless $cond; }
