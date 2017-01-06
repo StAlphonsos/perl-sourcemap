@@ -133,8 +133,9 @@ Return a human-readable summary of the data in the index.
 sub as_string {
 	my($self) = @_;
 	return sprintf(
-		q{<Index: %d tokens over %d lines in %d sources>},
+		q{<Index: %d tokens/%d entries over %d lines in %d sources>},
 		scalar(@{$self->{'tokens'}}),
+		scalar(keys(%{$self->{'index'}})),
 		scalar(@{$self->{'line_index'}}),
 		scalar(@{$self->{'sources'}}));
 }

@@ -19,7 +19,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 40;
+use Test::More tests => 42;
 use JS::SourceMap::Token;
 use JS::SourceMap::Index qw/token_index/;
 
@@ -64,6 +64,8 @@ foreach my $i (0..11) {
 foreach my $i (12..19) {
 	is($smi->lookup(1,$i),$tokens[3],"tokens[3]");
 }
+is($smi->lookup(123,10241),undef,"out of bounds is undef");
+is($smi->lookup("123","10241"),undef,"out of bounds w/strings");
 
 ##
 # Local variables:
