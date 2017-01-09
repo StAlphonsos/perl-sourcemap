@@ -51,7 +51,7 @@ use JS::SourceMap::Decoder;
 use vars qw(@EXPORT_OK $VERSION);
 
 @EXPORT_OK = qw(load loads discover);
-$VERSION = '0.1.2';
+$VERSION = '0.1.1';
 
 =pod
 
