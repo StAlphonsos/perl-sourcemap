@@ -20,7 +20,7 @@
 use strict;
 use warnings;
 use Test::More tests => 3;
-use JS::SourceMap qw/discover loads/;
+use JS::SourceMap qw/discover/;
 
 use t::lib;
 

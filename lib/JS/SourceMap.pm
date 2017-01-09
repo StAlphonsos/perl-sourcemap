@@ -4,7 +4,7 @@
 
 =head1 NAME
 
-JS::SourceMap - Parse and use JS SourceMaps in Perl
+JS::SourceMap - Parse and use JS source maps in Perl
 
 =head1 SYNOPSIS
 
@@ -28,10 +28,18 @@ a JS runtime error thrown e.g. in your browser into the real
 filename/line/column in the source code where the error occurred.
 
 This is a set of Perl modules that allow you to decode and use JS
-source maps.  We have adapted much of this Perl implementation from
-the Python implementation at
-https://github.com/martine/python-sourcemap, which is BSD-licensed.
-Our API is very similar to that Python module's.
+source maps.  A typical use case for this module is a server-side
+component in Perl that receives JS runtime error information somehow
+from a web application's JS front end.  You usually have the source
+map available on the server already but there is a `discover` function
+in `JS::SourceMap` that will search JS code for a pointer to its
+source map as per convention.  You'll have to fetch the URL that
+`discover` finds yourself, though.
+
+We have adapted much of this Perl implementation from the Python
+implementation at https://github.com/mattrobenolt/python-sourcemap,
+which is BSD-licensed.  Our API is very similar to that Python
+module's.
 
 =cut
 
@@ -43,7 +51,7 @@ use JS::SourceMap::Decoder;
 use vars qw(@EXPORT_OK $VERSION);
 
 @EXPORT_OK = qw(load loads discover);
-$VERSION = '0.1.0';
+$VERSION = '0.1.2';
 
 =pod
 

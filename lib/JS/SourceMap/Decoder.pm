@@ -89,7 +89,7 @@ sub parse_vlq {
 			($cur,$sign) = ($cur >> 1, $cur & 1);
 			$cur = -$cur if $sign;
 			push(@values,$cur);
-			($cur,$shift,$sign) = (0,0,0);
+			($cur,$shift) = (0,0);
 		}
 	}
 
@@ -137,6 +137,9 @@ sub decode {
 		foreach my $segment (@segments) {
 			next unless length($segment);
 			my @parse = parse_vlq($segment);
+			if ($self->opt('assertions')) {
+				assert(@parse > 0, "empty VLQ parse");
+			}
 			return undef unless @parse;
 			$dst_col += $parse[0];
 			my($src,$name);
@@ -205,7 +208,7 @@ __END__
 
 =head1 SEE ALSO
 
-L<JS::SourceMap::Index>
+L<JS::SourceMap::Index>, L<JS::SourceMap::Token>
 
 =head1 AUTHOR
 

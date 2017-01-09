@@ -8,7 +8,9 @@ JS::SourceMap::Token - One entry in a source map index
 
 =head1 SYNOPSIS
 
-  # don't use us directly, use JS::SourceMap::Decoder and friends
+  $map = JS::SourceMap::load($mapfile);
+  $token = $map->lookup($minified_line,$minified_col);
+  print $token->src, ":", $token->src_line, " column ", $token->src_col, "\n";
 
 =head1 DESCRIPTION
 
@@ -31,7 +33,7 @@ use warnings;
 =item * new $dst_line, $dst_col, $src, $src_line, $src_col, $name
 
 Constructor, should not be used directly by user code.  Instead
-use L<JS::SourceMap::Decoder>.
+use L<JS::SourceMap::Decoder> and L<JS::SourceMap::Index>.
 
 =back
 
