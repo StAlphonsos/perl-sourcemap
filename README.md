@@ -23,6 +23,12 @@ It hews fairly closely to that implementation.  I brought over all of
 the same test inputs (t/fixtures) and all of the tests that
 made sense (no iterators in Perl).
 
+## Source
+
+Module github repo: https://github.com/StAlphonsos/perl-sourcemap
+Feel free to open issues there if you find them.  The module is also
+available on CPAN.
+
 ## Installation
 
 It's the usual deal:

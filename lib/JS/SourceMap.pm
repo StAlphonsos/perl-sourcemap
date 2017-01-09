@@ -51,7 +51,7 @@ use JS::SourceMap::Decoder;
 use vars qw(@EXPORT_OK $VERSION);
 
 @EXPORT_OK = qw(load loads discover);
-$VERSION = '0.1.1';
+$VERSION = '0.1.2';
 
 =pod
 
@@ -146,6 +146,9 @@ L<JS::SourceMap::Decoder>
 =head1 AUTHOR
 
 attila <attila@stalphonsos.com>
+
+The most recent sourcecode can be found at the github repository:
+L<https://github.com/StAlphonsos/perl-sourcemap>.
 
 =head1 LICENSE
 

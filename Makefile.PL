@@ -24,5 +24,14 @@ WriteMakefile(
 	PAIR('SourceMap/Decoder.pm'),
 	PAIR('SourceMap/Index.pm'),
 	PAIR('SourceMap/Token.pm'),
-    }
+    },
+    META_MERGE => {
+	"meta-spec" => { version => 2 },
+	resources => {
+	    repository => {
+		type => 'git',
+		url => 'git://github.com/StAlphonsos/perl-sourcemap.git',
+	    },
+	},
+    },
 );
