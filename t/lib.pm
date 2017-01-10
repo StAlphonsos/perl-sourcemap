@@ -28,7 +28,6 @@
 package main;
 use strict;
 use warnings;
-use IO::File;
 
 sub setup_testing_env {}
 
